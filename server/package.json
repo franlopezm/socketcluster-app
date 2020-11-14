@@ -1,0 +1,25 @@
+{
+  "name": "socketcluster-app-server",
+  "version": "1.0.0",
+  "description": "Socket cluster server example app",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon ./index.js",
+    "start": "node ./index.js"
+  },
+  "keywords": [
+    "socketcluster",
+    "socket"
+  ],
+  "author": {
+    "name": "Francisco López Muñoz",
+    "url": "https://github.com/franlopezm"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "socketcluster-server": "^16.0.1"
+  }
+}
