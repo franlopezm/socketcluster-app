@@ -61,7 +61,7 @@ class Socket {
       await this.agServer.exchange.invokePublish(channel, message)
     } catch(error) {
       error.method = 'Socket.transmitMsgAsync'
-      console.error(error.method, error)
+      console.error('ERROR', error.method, error)
 
       throw error
     }
@@ -120,28 +120,28 @@ class Socket {
   // Listen sockets errors
   async _listenError() {
     for await(let { error } of this.agServer.listener('error')) {
-      console.error('Socket error:', error)
+      console.error('ERROR Socket error:', error)
     }
   }
 
   // Listen socket is ready
   async _listenReady() {
     for await(let data of this.agServer.listener('ready')) {
-      console.error('Socket is ready.')
+      console.info('INFO Socket is ready.')
     }
   }
 
   // Listen sockets disconnections
   async _listenDisconnection() {
     for await(let socket of this.agServer.listener('disconnection')) {
-      console.info('Socket is disconnect:', socket.id)
+      console.info('INFO Socket is disconnect:', socket.id)
     }
   }
 
   // Listen connections
   async _listenConnection() {
     for await (let { socket } of this.agServer.listener('connection')) {
-      console.info('Socket is connect:', socket.id)
+      console.info('INFO Socket is connect:', socket.id)
     }
   }
 }
