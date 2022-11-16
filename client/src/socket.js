@@ -41,7 +41,7 @@ class SocketConnection {
     this._socket = socketCluster.create(this._options)
 
     for await (let data of this._socket.listener('connect')) {
-      console.info('Socket connected.')
+      console.info('Socket connected.', data)
     }
     for await (let data of this._socket.listener('disconnect')) {
       console.info('Socket disconnected.', data)
