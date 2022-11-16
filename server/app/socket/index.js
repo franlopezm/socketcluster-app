@@ -28,6 +28,8 @@ class Socket {
     this._listenError()
     this._listenDisconnection()
     this._listenConnection()
+    this._listenSubscription()
+    this._listenUnsubscription()
 
     return true
   }
@@ -115,6 +117,20 @@ class Socket {
    */
   isAttach() {
     if (!this.agServer) throw new Error('Socket is not attach to a httpServer.')
+  }
+
+  // Listen subscription channels
+  async _listenSubscription() {
+    for await(let data of this.agServer.listener('subscription')) {
+      console.info('INFO subscribe', data.socket.id, data.channel, data.subscriptionOptions)
+    }
+  }
+
+  // Listen Unsubscription channels
+  async _listenUnsubscription() {
+    for await(let data of this.agServer.listener('unsubscription')) {
+      console.info('INFO unsubscribe', data.socket.id, data.channel)
+    }
   }
 
   // Listen sockets errors
