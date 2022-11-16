@@ -1,6 +1,5 @@
 const { HOST = '0.0.0.0', PORT = 8000 } = process.env
 
-const bodyParser = require('body-parser')
 const express = require('express')
 const http = require('http')
 
@@ -14,8 +13,8 @@ const app = express()
 app.disable('x-powered-by')
 app.use(require('./middlewares/logger'))
 
-app.use(bodyParser.json({ limit: '2mb' }))
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json({ limit: '2mb' }))
+app.use(express.urlencoded({ extended: true }))
 
 // status
 app.get('/health', (req, res) => res.json({ success: true }))
