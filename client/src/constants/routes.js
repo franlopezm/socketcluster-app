@@ -5,8 +5,8 @@ export const MENU_ITEMS = [{
   key: 'home',
   icon: <HomeOutlined />
 }, {
-  label: 'Socket Servers',
-  key: 'socketServer',
+  label: 'Servers',
+  key: 'server',
   icon: <CloudServerOutlined />
 }, {
   label: 'Chat',
@@ -18,6 +18,6 @@ export const MENU_KEYS = MENU_ITEMS.map(e => e.key)
 
 export const ROUTES_KEY = {
   home: 'home',
-  socketServer: 'socketServer',
+  socketServer: 'server',
   chat: 'chat'
 }

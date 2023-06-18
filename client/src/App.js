@@ -2,13 +2,17 @@ import { useCallback, useState } from 'react'
 import { Menu, Layout } from 'antd'
 
 import Routes from './components/Routes'
-import { MENU_ITEMS, MENU_KEYS } from './constants/routes'
+import { MENU_ITEMS, MENU_KEYS, ROUTES_KEY } from './constants/routes'
 import { MenuStorage } from './services/LocalStorage'
 
 const { Header, Content } = Layout
 
+const menuKeyInStorage = MenuStorage.get()
+const START_ROUTE = MENU_KEYS.includes(menuKeyInStorage)
+  ? menuKeyInStorage : ROUTES_KEY.home
+
 function App() {
-  const [route, setRoute] = useState(MenuStorage.get())
+  const [route, setRoute] = useState(START_ROUTE)
 
   const onChangeRoute = useCallback(
     (e) => {
