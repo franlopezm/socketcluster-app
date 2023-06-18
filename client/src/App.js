@@ -1,29 +1,30 @@
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { Menu } from 'antd'
-import { CloudServerOutlined, HomeOutlined, WechatOutlined } from '@ant-design/icons'
+
+import { MENU_ITEMS, MENU_KEYS } from './constants/routes'
+import { MenuStorage } from './services/LocalStorage'
 
 function App() {
-  const [route, setRoute] = useState('home')
+  const [route, setRoute] = useState(MenuStorage.get())
+
+  const onChangeRoute = useCallback(
+    (e) => {
+      const key = e.key
+
+      if (MENU_KEYS.includes(key)) {
+        setRoute(key)
+        MenuStorage.set(key)
+      }
+    }, [setRoute]
+  )
 
   return (
     <div className="app">
       <Menu
         mode="horizontal"
-        onClick={(e) => setRoute(e.key)}
+        onClick={onChangeRoute}
         selectedKeys={[route]}
-        items={[{
-          label: 'Home',
-          key: 'home',
-          icon: <HomeOutlined />
-        }, {
-          label: 'Socket Servers',
-          key: 'socketServer',
-          icon: <CloudServerOutlined />
-        }, {
-          label: 'Chat',
-          key: 'chat',
-          icon: <WechatOutlined />
-        }]}
+        items={MENU_ITEMS}
       />
     </div>
   )
