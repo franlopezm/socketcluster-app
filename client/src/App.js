@@ -1,36 +1,32 @@
-import { useEffect } from 'react'
-import './App.css';
-
-import socket from './socket'
+import { useState } from 'react'
+import { Menu } from 'antd'
+import { CloudServerOutlined, HomeOutlined, WechatOutlined } from '@ant-design/icons'
 
 function App() {
-  useEffect(() => {
-    socket.start()
-
-    socket.subscribe('prueba')
-
-    return function cleanUp() {
-      socket.destroy()
-    }
-  }, [])
+  const [route, setRoute] = useState('home')
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app">
+      <Menu
+        mode="horizontal"
+        onClick={(e) => setRoute(e.key)}
+        selectedKeys={[route]}
+        items={[{
+          label: 'Home',
+          key: 'home',
+          icon: <HomeOutlined />
+        }, {
+          label: 'Socker Servers',
+          key: 'socketServer',
+          icon: <CloudServerOutlined />
+        }, {
+          label: 'Chat',
+          key: 'chat',
+          icon: <WechatOutlined />
+        }]}
+      />
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
