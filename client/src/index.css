@@ -19,11 +19,10 @@ code {
 .header-main {
   background-color: #fff;
   height: 50px;
-  padding-inline: 50px;
+  padding: 0 50px;
   line-height: 50px;
 }
 
 .content-main {
-  padding: 15px 0 15px 0;
-  padding-inline: 50px;
+  padding: 15px 50px;
 }
