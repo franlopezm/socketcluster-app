@@ -33,7 +33,7 @@ httpServer.on('request', app)
 socket.attach(httpServer, { allowClientPublish: false })
 
 // Start httpServer
-httpServer.listen(PORT, HOST)
+httpServer.listen(parseInt(PORT, 10), HOST)
 
 // Listen server is ready
 httpServer.on('listening', () => {

@@ -11,7 +11,10 @@
         "<node_internals>/**"
       ],
       "internalConsoleOptions": "openOnSessionStart",
-      "outputCapture": "std"
+      "outputCapture": "std",
+      "env": {
+        "PORT": "8080"
+      }
     }
   ]
 }
