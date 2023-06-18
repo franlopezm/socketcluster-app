@@ -16,7 +16,7 @@ function App() {
           key: 'home',
           icon: <HomeOutlined />
         }, {
-          label: 'Socker Servers',
+          label: 'Socket Servers',
           key: 'socketServer',
           icon: <CloudServerOutlined />
         }, {
