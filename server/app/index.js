@@ -1,7 +1,8 @@
-const { HOST = '0.0.0.0', PORT = 8000 } = process.env
+const { HOST = '0.0.0.0', PORT = 8080 } = process.env
 
 const express = require('express')
 const http = require('http')
+const cors = require('cors')
 
 const socket = require('./socket')
 
@@ -11,6 +12,8 @@ const httpServer = http.createServer()
 
 const app = express()
 app.disable('x-powered-by')
+
+app.use(cors())
 app.use(require('./middlewares/logger'))
 
 app.use(express.json({ limit: '2mb' }))
