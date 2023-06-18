@@ -1,0 +1,17 @@
+.servers__list {
+  max-width: 50%;
+}
+.servers__list-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.servers__list-table {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+.servers__list-title-info {
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 15px;
+}

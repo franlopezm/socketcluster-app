@@ -26,3 +26,8 @@ code {
 .content-main {
   padding: 15px 50px;
 }
+
+h3 {
+  margin: 0px 0 8px;
+  font-size: 18px;
+}

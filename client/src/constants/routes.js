@@ -18,6 +18,6 @@ export const MENU_KEYS = MENU_ITEMS.map(e => e.key)
 
 export const ROUTES_KEY = {
   home: 'home',
-  socketServer: 'server',
+  server: 'server',
   chat: 'chat'
 }

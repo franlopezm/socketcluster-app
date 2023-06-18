@@ -5,7 +5,7 @@
       "name": "Server Dev Watch",
       "type": "node",
       "request": "launch",
-      "runtimeExecutable": "nodemon",
+      // "runtimeExecutable": "nodemon",
       "program": "${workspaceFolder}/server/index.js",
       "skipFiles": [
         "<node_internals>/**"
