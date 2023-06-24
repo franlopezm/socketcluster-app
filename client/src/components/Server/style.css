@@ -15,3 +15,18 @@
   font-weight: bold;
   font-size: 15px;
 }
+
+.server__info {
+  margin-top: 50px;
+  width: 40%;
+  max-width: 40%;
+}
+
+.server__info-statistic .ant-statistic-content {
+  font-size: 18px;
+}
+
+.server__info-list__item {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}

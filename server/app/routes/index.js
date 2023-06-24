@@ -46,7 +46,7 @@ router
           port: '8080',
           secure: false,
           url: 'http://localhost:8080',
-          default: true, // always run
+          isMainServer: true, // always run
         }, {
           host: 'localhost',
           port: '8000',

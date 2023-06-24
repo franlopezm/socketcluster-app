@@ -2,14 +2,13 @@ import { useState, useCallback } from 'react'
 import './style.css'
 
 import ListServers from './ListServers'
-import SocketInfo from './SocketInfo'
+import ServerInfo from './ServerInfo'
 
 function Server() {
   const [server, setServer] = useState(null)
 
   const onClick = useCallback(
     (serverInfo) => {
-      console.log("file: index.js:14 ~ Server ~ serverInfo:", serverInfo)
       setServer(serverInfo)
     },
     []
@@ -20,13 +19,10 @@ function Server() {
       <ListServers
         onClick={onClick}
       />
-
-      - Al pulsar un servidor información sobre este. /socket/status
-      health, etc
       {
         server
           ? (
-            <SocketInfo
+            <ServerInfo
               server={server}
             />
           )

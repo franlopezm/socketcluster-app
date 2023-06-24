@@ -1,9 +1,9 @@
 import { useState, useEffect, useCallback } from 'react'
 import { Badge, Table, Tag, Button } from 'antd'
 import axios from 'axios'
-import './style.css'
 
 import { ENDPOINT, SERVER_DEFAULT } from '../../constants/serverInfo'
+import { SecureTag, MainServerTag } from './common'
 
 function ListServers(props) {
   const { onClick } = props
@@ -113,15 +113,8 @@ function ListServers(props) {
             title: 'Secure',
             dataIndex: 'secure',
             render: (_, { secure }) => {
-              const color = secure ? 'green' : 'red'
-              const text = secure ? 'Secure' : 'Not Secure'
-
               return (
-                <Tag
-                  color={color}
-                >
-                  {text}
-                </Tag>
+                <SecureTag secure={secure} />
               )
             }
           }, {
@@ -129,18 +122,14 @@ function ListServers(props) {
             title: 'Url',
             dataIndex: 'url'
           }, {
-            key: 'default',
-            title: 'Default',
-            dataIndex: 'default',
-            render: (_, { default: d }) => {
-              if (!d) return ''
-
+            key: 'isMainServer',
+            title: 'Main Server',
+            dataIndex: 'isMainServer',
+            render: (_, { isMainServer }) => {
               return (
-                <Tag
-                  color='magenta'
-                >
-                  Main Server
-                </Tag>
+                <MainServerTag
+                  isMainServer={isMainServer}
+                />
               )
             }
           }]}
