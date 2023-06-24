@@ -1,12 +1,12 @@
 const router = require('express').Router()
 
-const socket = require('../socket')
+const Socket = require('../services/Socket')
 
 router
   .route('/message')
   .post(async function (req, res, next) {
     try {
-      socket.transmitMsg('prueba', req.body)
+      Socket.transmitMsg('prueba', req.body)
 
       res.send({ success: true })
     } catch (error) {
@@ -18,7 +18,7 @@ router
   .route('/message/sync')
   .post(async function (req, res, next) {
     try {
-      await socket.transmitMsgAsync('prueba', req.body)
+      await Socket.transmitMsgAsync('prueba', req.body)
 
       res.send({ success: true })
     } catch (error) {
@@ -30,7 +30,7 @@ router
   .route('/socket/status')
   .get(function (req, res, next) {
     try {
-      res.send(socket.status())
+      res.send(Socket.status())
     } catch (error) {
       next(error)
     }

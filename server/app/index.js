@@ -4,7 +4,7 @@ const express = require('express')
 const http = require('http')
 const cors = require('cors')
 
-const socket = require('./socket')
+const Socket = require('./services/Socket')
 
 
 // Create a httpServer instance
@@ -33,7 +33,7 @@ app.use(require('./middlewares/errors'))
 httpServer.on('request', app)
 
 // Attach socket to a httpServer
-socket.attach(httpServer, { allowClientPublish: false })
+Socket.attach(httpServer, { allowClientPublish: false })
 
 // Start httpServer
 httpServer.listen(parseInt(PORT, 10), HOST)
