@@ -1,5 +1,5 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Badge, Table, Tag, Button } from 'antd'
+import { Badge, Table, Button } from 'antd'
 import axios from 'axios'
 
 import { ENDPOINT, SERVER_DEFAULT } from '../../constants/serverInfo'

@@ -13,8 +13,10 @@
       "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std",
       "env": {
-        "PORT": "8080"
-      }
+        "PORT": "8080",
+        "REDIS_HOST": "localhost",
+        "REDIS_PORT": "6379"
+      },
     }
   ]
 }

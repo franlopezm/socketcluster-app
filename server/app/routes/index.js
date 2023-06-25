@@ -1,6 +1,7 @@
 const router = require('express').Router()
 
 const Socket = require('../services/Socket')
+const Redis = require('../services/Redis')
 
 router
   .route('/message')
@@ -38,27 +39,11 @@ router
 
 router
   .route('/socket/servers/availables')
-  .get(function (req, res, next) {
+  .get(async function (req, res, next) {
     try {
-      res.send(
-        [{
-          host: 'localhost',
-          port: '8080',
-          secure: false,
-          url: 'http://localhost:8080',
-          isMainServer: true, // always run
-        }, {
-          host: 'localhost',
-          port: '8000',
-          secure: false,
-          url: 'http://localhost:8000'
-        }, {
-          host: 'localhost',
-          port: '8081',
-          secure: false,
-          url: 'http://localhost:8081'
-        }]
-      )
+      const data = await Redis.getAllServersInfo()
+
+      res.send(data)
     } catch (error) {
       next(error)
     }
