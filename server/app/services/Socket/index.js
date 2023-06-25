@@ -61,7 +61,7 @@ class Socket {
 
     try {
       await this.agServer.exchange.invokePublish(channel, message)
-    } catch(error) {
+    } catch (error) {
       error.method = 'Socket.transmitMsgAsync'
       console.error('ERROR', error.method, error)
 
@@ -121,35 +121,35 @@ class Socket {
 
   // Listen subscription channels
   async _listenSubscription() {
-    for await(let data of this.agServer.listener('subscription')) {
+    for await (let data of this.agServer.listener('subscription')) {
       console.info('INFO subscribe', data.socket.id, data.channel, data.subscriptionOptions)
     }
   }
 
   // Listen Unsubscription channels
   async _listenUnsubscription() {
-    for await(let data of this.agServer.listener('unsubscription')) {
+    for await (let data of this.agServer.listener('unsubscription')) {
       console.info('INFO unsubscribe', data.socket.id, data.channel)
     }
   }
 
   // Listen sockets errors
   async _listenError() {
-    for await(let { error } of this.agServer.listener('error')) {
+    for await (let { error } of this.agServer.listener('error')) {
       console.error('ERROR Socket error:', error)
     }
   }
 
   // Listen socket is ready
   async _listenReady() {
-    for await(let data of this.agServer.listener('ready')) {
+    for await (let data of this.agServer.listener('ready')) {
       console.info('INFO Socket is ready.')
     }
   }
 
   // Listen sockets disconnections
   async _listenDisconnection() {
-    for await(let socket of this.agServer.listener('disconnection')) {
+    for await (let socket of this.agServer.listener('disconnection')) {
       console.info('INFO Socket is disconnect:', socket.id)
     }
   }

@@ -2,12 +2,15 @@ const router = require('express').Router()
 
 const Socket = require('../services/Socket')
 const Redis = require('../services/Redis')
+const { RedisPublisher } = require('../services/RedisPubSub')
 
 router
   .route('/message')
   .post(async function (req, res, next) {
     try {
-      Socket.transmitMsg('prueba', req.body)
+
+      RedisPublisher.publish(req.body)
+      // Socket.transmitMsg('prueba', req.body)
 
       res.send({ success: true })
     } catch (error) {
@@ -19,8 +22,9 @@ router
   .route('/message/sync')
   .post(async function (req, res, next) {
     try {
-      await Socket.transmitMsgAsync('prueba', req.body)
+      RedisPublisher.publish(req.body)
 
+      // await Socket.transmitMsgAsync('prueba', req.body)
       res.send({ success: true })
     } catch (error) {
       next(error)

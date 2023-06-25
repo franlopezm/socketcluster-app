@@ -7,6 +7,7 @@ const cors = require('cors')
 
 const Socket = require('./services/Socket')
 const Redis = require('./services/Redis')
+const { RedisPublisher, RedisSubscriber } = require('./services/RedisPubSub')
 
 const SERVER_ID = randomBytes(10).toString('base64url')
 
@@ -43,9 +44,23 @@ httpServer.listen(parseInt(PORT, 10), HOST)
 
 // Listen server is ready
 httpServer.on('listening', () => {
-  Redis.connect({
+  // Redis.connect({
+  //   host: REDIS_HOST,
+  //   port: REDIS_PORT
+  // })
+
+  RedisPublisher.connect({
     host: REDIS_HOST,
     port: REDIS_PORT
+  })
+
+  RedisSubscriber.connect({
+    host: REDIS_HOST,
+    port: REDIS_PORT
+  })
+
+  RedisSubscriber.subscribe((channel, data) => {
+    console.log('Received', channel, 'message', data)
   })
 
   console.info(
@@ -56,16 +71,16 @@ httpServer.on('listening', () => {
     `
   )
 
-  Redis.addServerInfo(
-    SERVER_ID,
-    {
-      host: 'localhost',
-      port: PORT,
-      secure: false,
-      url: `http://localhost:${PORT}`,
-      isMainServer: PORT === '8080'
-    }
-  )
+  // Redis.addServerInfo(
+  //   SERVER_ID,
+  //   {
+  //     host: 'localhost',
+  //     port: PORT,
+  //     secure: false,
+  //     url: `http://localhost:${PORT}`,
+  //     isMainServer: PORT === '8080'
+  //   }
+  // )
 })
 
 process.on('exit', (code) => {
